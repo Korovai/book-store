@@ -1,0 +1,39 @@
+.wrHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #232f3e;
+}
+
+.wrHeader a {
+  text-decoration: none;
+}
+
+.wrLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: #fff;
+}
+
+.wrLogo img {
+  width: 40px;
+  margin-right: 15px;
+}
+
+.wrBasket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #fff;
+}
+
+.wrBasket img {
+  width: 40px;
+  margin-right: 15px;
+}

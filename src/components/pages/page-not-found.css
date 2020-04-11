@@ -1,0 +1,47 @@
+.wrPageNotFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrPageNotFound img {
+  width: 120px;
+  margin: 15px 0;
+}
+
+.pageNotFoundTitle {
+  max-width: 400px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #232f3e;
+} 
+
+.pageNotFoundText {
+  max-width: 400px;
+  font-size: 1.125rem;
+  font-weight: lighter;
+  color: #232f3e;
+  text-align: center;
+}
+
+.btnGoHome {
+  margin-top: 15px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #febd69;
+  outline: none;
+  cursor: pointer;
+}
+
+.btnGoHome a,
+.btnGoHome a:focus {
+  font-weight: bold;
+  color: #232f3e;
+  text-decoration: none;
+}
+
+.btnGoHome:hover a {
+  color: #fff;
+  text-decoration: none;
+}

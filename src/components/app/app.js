@@ -1,16 +1,24 @@
 import React from 'react';
-import withBookstoreService from '../../hoc/with-bookstore-service';
+import {Switch, Route} from 'react-router-dom';
+import Header from '../header/header';
+import HomePage from '../pages/home-page';
+import BasketPage from '../pages/basket-page';
+import PageNotFound from '../pages/page-not-found';
 
 import './app.css';
 
-const App = ({bookstoreService}) => {
-  console.log(bookstoreService.getBooks());
-  
+const App = () => {
   return(
     <div className="wrApp">
-      <h1>Book Store</h1>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/home" component={HomePage} />
+        <Route path="/basket" component={BasketPage} />
+        <Route component={PageNotFound} />
+      </Switch>
     </div>
   );
 };
 
-export default withBookstoreService(App);
+export default App;
