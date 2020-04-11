@@ -1,0 +1,22 @@
+.wrErrorIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrErrorIndicator img {
+  width: 120px;
+  margin: 15px 0;
+}
+
+.errorIndicatorTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #232f3e;
+}
+
+.errorIndicatorText {
+  font-size: 1.125rem;
+  font-weight: lighter;
+  color: #232f3e;
+}
