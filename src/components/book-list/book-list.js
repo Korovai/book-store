@@ -1,36 +1,33 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import BookListItem from '../book-list-item/book-list-item';
+import withBookstoreService from '../../hoc/with-bookstore-service';
+import {booksLoaded} from '../../actions/index';
 
 import './book-list.css';
 
-const BookList = (props) => {
-  const data = props.books;
-  const items = data.map((book) => {
-    const {id, title, author, price, coverImage} = book;
+class BookList extends Component {
+  
+  componentDidMount() {
+    // 1. Receive data
+    const {bookstoreService} = this.props;
+    const data = bookstoreService.getBooks();
+    
+    // 2. Dispatch action to store
+    this.props.booksLoaded(data);
+  };
+
+  render() {
+    const data = this.props.books;
     
     return(
-      <li key={id} className="bookListItem">
-        <div className="wrCoverBook">
-          <img src={coverImage} alt="Cover" />
-        </div>
-      
-        <div className="wrInfoBook">
-          <span className="titleBook">{title}</span>
-          <span className="authorBook">by {author}</span>
-          <span className="priceBook">${price}</span>
-          <button className="btnBuyBook"><i class="fas fa-cart-plus"></i>Add to Cart</button>
-        </div>
-      </li>
+      <div className="wrBookList">
+        <ul className="bookList">
+          <BookListItem data={data} />
+        </ul>
+      </div>
     );
-  });
-
-  return(
-    <div className="wrBookList">
-      <ul className="bookList">
-        {items}
-      </ul>
-    </div>
-  );
+  };
 };
 
 const mapStateToProps = (state) => {
@@ -39,4 +36,16 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(BookList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    booksLoaded: (newBooks) => {
+      dispatch(booksLoaded(newBooks));
+      /*dispatch({
+        type: 'BOOKS_LOADED',
+        payload: newBooks
+      });*/
+    }
+  };
+};
+
+export default withBookstoreService(connect(mapStateToProps, mapDispatchToProps)(BookList));
