@@ -1,11 +1,12 @@
 import React from 'react';
+import BookList from '../book-list/book-list';
 
 import './home-page.css';
 
 const HomePage = () => {
   return(
     <div className="wrHomePage">
-      <h1>Home Page</h1>
+      <BookList />
     </div>
   );
 };
