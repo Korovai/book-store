@@ -1,38 +1,45 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import BookListItem from '../book-list-item/book-list-item';
+import Spinner from '../spinner/spinner';
 import withBookstoreService from '../../hoc/with-bookstore-service';
-import {booksLoaded} from '../../actions/index';
+import {booksLoaded, booksRequested} from '../../actions/index';
 
 import './book-list.css';
 
 class BookList extends Component {
   
   componentDidMount() {
-    // 1. Receive data
-    const {bookstoreService} = this.props;
-    const data = bookstoreService.getBooks();
+    const {bookstoreService, booksLoaded, booksRequested} = this.props;
     
-    // 2. Dispatch action to store
-    this.props.booksLoaded(data);
+    bookstoreService.getBooks()
+      .then((data) => {
+        booksLoaded(data);
+      });
+    booksRequested();
   };
 
   render() {
-    const data = this.props.books;
+    const {books, loading} = this.props;
+    
+    if(loading) {
+      return <Spinner />
+    }
     
     return(
       <div className="wrBookList">
         <ul className="bookList">
-          <BookListItem data={data} />
+          <BookListItem data={books} />
         </ul>
       </div>
     );
   };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({books, loading}) => {
   return {
-    books: state.books
+    books,
+    loading
   };
 };
 
@@ -44,6 +51,9 @@ const mapDispatchToProps = (dispatch) => {
         type: 'BOOKS_LOADED',
         payload: newBooks
       });*/
+    },
+    booksRequested: () => {
+      dispatch(booksRequested());
     }
   };
 };
