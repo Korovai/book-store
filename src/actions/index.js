@@ -11,7 +11,15 @@ const booksRequested = () => {
   };
 };
 
+const booksError = (error) => {
+  return {
+    type: 'FETCH_BOOKS_FAILURE',
+    payload: error
+  };
+};
+
 export {
   booksLoaded,
-  booksRequested
+  booksRequested,
+  booksError
 }
