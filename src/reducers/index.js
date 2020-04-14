@@ -2,18 +2,7 @@ const initialState = {
   books: [],
   loading: true,
   error: null,
-  cartItems: [
-    {
-      id: 1,
-      title: 'Learning React: Functional Web Development with React and Redux',
-      count: 2,
-      price: 56},
-    {
-      id: 2,
-      title: 'React Explained: Your Step-by-Step Guide to React',
-      count: 1,
-      price: 36}
-  ]
+  cartItems: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -49,21 +38,43 @@ const reducer = (state = initialState, action) => {
     case 'BOOK_ADDEDE_TO_CART':
       const bookId = action.payload;
       const book = state.books.find((book) => book.id === bookId);
-      const newItem = {
-        id: book.id,
-        title: book.title,
-        count: 1,
-        price: book.price
+      const itemIdx = state.cartItems.findIndex(({id}) => id === bookId);
+      const item = state.cartItems[itemIdx];
+      
+      let newItem;
+      if(item) {
+        newItem = {
+          ...item,
+          count: item.count + 1,
+          total: item.total + book.price
+        }; 
+      } else {
+        newItem = {
+          id: book.id,
+          title: book.title,
+          count: 1,
+          total: book.price
+        };
       };
       
-      return {
-        ...state,
-        cartItems: [
-          ...state.cartItems,
-          newItem
-        ]
+      if(itemIdx !== -1) {
+        return {
+          ...state,
+          cartItems: [
+            ...state.cartItems.slice(0, itemIdx),
+            newItem,
+            ...state.cartItems.slice(itemIdx + 1)
+          ]
+        };
+      } else {
+        return {
+          ...state,
+          cartItems: [
+            ...state.cartItems,
+            newItem
+          ]
+        };
       };
-
     default:
       return state;
   }

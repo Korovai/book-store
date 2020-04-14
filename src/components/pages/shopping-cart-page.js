@@ -32,13 +32,13 @@ class ShoppingCartPage extends Component {
             <tbody>
               {
                 cartItems.map((item, idx) => {
-                  const {id, title, count, price} = item;
+                  const {id, title, count, total} = item;
                   return(
                     <tr key={id} className="tableRow">
                       <td>{idx + 1}</td>
                       <td>{title}</td>
                       <td>{count}</td>
-                      <td>${price}</td>
+                      <td>${total}</td>
                       <td className="wrActionButtons">
                         <button className="btnAddItem">
                           <i className="fa fa-plus-circle" />
