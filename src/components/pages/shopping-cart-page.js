@@ -31,10 +31,11 @@ class ShoppingCartPage extends Component {
 
             <tbody>
               {
-                cartItems.map(({id, title, count, price}) => {
+                cartItems.map((item, idx) => {
+                  const {id, title, count, price} = item;
                   return(
                     <tr key={id} className="tableRow">
-                      <td>{id}</td>
+                      <td>{idx + 1}</td>
                       <td>{title}</td>
                       <td>{count}</td>
                       <td>${price}</td>

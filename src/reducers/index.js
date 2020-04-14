@@ -39,13 +39,31 @@ const reducer = (state = initialState, action) => {
         error: action.payload,
         cartItems: state.cartItems
       };
-      case 'FETCH_CARTITEMS_REQUEST':
-        return {
-          books: [],
-          loading: false,
-          error: null,
-          cartItems: state.cartItems
-        };
+    case 'FETCH_CARTITEMS_REQUEST':
+      return {
+        books: [],
+        loading: false,
+        error: null,
+        cartItems: state.cartItems
+      };
+    case 'BOOK_ADDEDE_TO_CART':
+      const bookId = action.payload;
+      const book = state.books.find((book) => book.id === bookId);
+      const newItem = {
+        id: book.id,
+        title: book.title,
+        count: 1,
+        price: book.price
+      };
+      
+      return {
+        ...state,
+        cartItems: [
+          ...state.cartItems,
+          newItem
+        ]
+      };
+
     default:
       return state;
   }

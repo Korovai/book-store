@@ -2,7 +2,7 @@ import React from 'react';
 
 import './book-list-item.css';
 
-const BookListItem = ({data}) => { 
+const BookListItem = ({data, onAddedToCart}) => { 
   return(
     <React.Fragment>
       {
@@ -19,7 +19,7 @@ const BookListItem = ({data}) => {
                 <span className="titleBook">{title}</span>
                 <span className="authorBook">by {author}</span>
                 <span className="priceBook">${price}</span>
-                <button className="btnBuyBook"><i className="fas fa-cart-plus"></i>Add to Cart</button>
+                <button onClick={() => onAddedToCart(id)} className="btnBuyBook"><i className="fas fa-cart-plus"></i>Add to Cart</button>
               </div>
             </li>
           );

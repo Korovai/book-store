@@ -24,9 +24,17 @@ const cartItemsRequested = () => {
   };
 };
 
+const bookAddedToCart = (bookId) => {
+  return {
+    type: 'BOOK_ADDEDE_TO_CART',
+    payload: bookId
+  }
+};
+
 export {
   booksLoaded,
   booksRequested,
   booksError,
-  cartItemsRequested
+  cartItemsRequested,
+  bookAddedToCart
 }

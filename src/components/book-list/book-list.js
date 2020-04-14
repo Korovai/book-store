@@ -4,7 +4,7 @@ import BookListItem from '../book-list-item/book-list-item';
 import Spinner from '../spinner/spinner';
 import ErrorIndicator from '../error-indicator/error-indicator';
 import withBookstoreService from '../../hoc/with-bookstore-service';
-import {booksLoaded, booksRequested, booksError} from '../../actions/index';
+import {booksLoaded, booksRequested, booksError, bookAddedToCart} from '../../actions/index';
 
 import './book-list.css';
 
@@ -24,7 +24,7 @@ class BookList extends Component {
   };
 
   render() {
-    const {books, loading, error} = this.props;
+    const {books, loading, error, onAddedToCart} = this.props;
     
     if(loading) {
       return <Spinner />
@@ -37,7 +37,7 @@ class BookList extends Component {
     return(
       <div className="wrBookList">
         <ul className="bookList">
-          <BookListItem data={books} />
+          <BookListItem data={books} onAddedToCart={onAddedToCart} />
         </ul>
       </div>
     );
@@ -66,6 +66,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     booksError: (error) => {
       dispatch(booksError(error));
+    },
+    onAddedToCart: (id) => {
+      dispatch(bookAddedToCart(id));
     }
   };
 };
