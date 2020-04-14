@@ -1,0 +1,89 @@
+.wrShoppingCartPage {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.shoppingCartTable {
+  width: 100%;
+}
+
+.shoppingCartTable h2 {
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  border-bottom: 1px solid #6e6e6e;
+  padding: 5px;
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.table td {
+  height: 45px;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 5px;
+  transition: .3s linear;
+}
+
+.table tr:hover td {
+  background: #f3f3f3;
+}
+
+.wrActionButtons button {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  margin: 0 2px;
+  background: none;
+  cursor: pointer;
+}
+
+.wrActionButtons button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.btnAddItem {
+  border: 1px solid #08772b;
+  color: #08772b;
+}
+
+.btnDelItem {
+  border: 1px solid #febd69;
+  color: #f4b630;
+}
+
+.btnDelAllItems {
+  border: 1px solid #ca8384;
+  color: #ca8384;
+}
+
+.btnAddItem:hover {
+  background: #08772b;
+  color: #fff;
+}
+
+.btnDelItem:hover {
+  background: #febd69;
+  color: #fff;
+}
+
+.btnDelAllItems:hover {
+  background: #ca8384;
+  color: #fff;
+}
+
+.totalCost {
+  padding: 5px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: right;
+}

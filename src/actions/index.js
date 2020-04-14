@@ -18,8 +18,15 @@ const booksError = (error) => {
   };
 };
 
+const cartItemsRequested = () => {
+  return {
+    type: 'FETCH_CARTITEMS_REQUEST'
+  };
+};
+
 export {
   booksLoaded,
   booksRequested,
-  booksError
+  booksError,
+  cartItemsRequested
 }
