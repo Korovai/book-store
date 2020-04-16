@@ -1,17 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+
 import BookListItem from '../book-list-item/book-list-item';
 import Spinner from '../spinner/spinner';
 import ErrorIndicator from '../error-indicator/error-indicator';
 import withBookstoreService from '../../hoc/with-bookstore-service';
-import {booksLoaded, booksRequested, booksError, bookAddedToCart} from '../../actions/index';
+import {
+  booksLoaded,
+  booksRequested,
+  booksError,
+  bookAddedToCart
+} from '../../actions/index';
 
 import './book-list.css';
 
 class BookList extends Component {
   
   componentDidMount() {
-    const {bookstoreService, booksLoaded, booksRequested, booksError} = this.props;
+    const {
+      bookstoreService,
+      booksLoaded,
+      booksRequested,
+      booksError
+    } = this.props;
     
     bookstoreService.getBooks()
       .then((data) => {
@@ -44,7 +55,7 @@ class BookList extends Component {
   };
 };
 
-const mapStateToProps = ({books, loading, error}) => {
+const mapStateToProps = ({bookList: {books, loading, error}}) => {
   return {
     books,
     loading,
@@ -54,23 +65,13 @@ const mapStateToProps = ({books, loading, error}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    booksLoaded: (newBooks) => {
-      dispatch(booksLoaded(newBooks));
-      /*dispatch({
-        type: 'BOOKS_LOADED',
-        payload: newBooks
-      });*/
-    },
-    booksRequested: () => {
-      dispatch(booksRequested());
-    },
-    booksError: (error) => {
-      dispatch(booksError(error));
-    },
-    onAddedToCart: (id) => {
-      dispatch(bookAddedToCart(id));
-    }
+    booksLoaded: (newBooks) => dispatch(booksLoaded(newBooks)),
+    booksRequested: () => dispatch(booksRequested()),
+    booksError: (error) => dispatch(booksError(error)),
+    onAddedToCart: (id) => dispatch(bookAddedToCart(id))
   };
 };
 
-export default withBookstoreService(connect(mapStateToProps, mapDispatchToProps)(BookList));
+export default withBookstoreService(
+  connect(mapStateToProps, mapDispatchToProps)(BookList)
+);

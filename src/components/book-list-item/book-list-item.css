@@ -12,8 +12,7 @@
 }
 
 .wrCoverBook {
-  display: flex;
-  justify-content: center;
+  flex-shrink: 0;
   width: 180px;
   margin-right: 15px;
 }

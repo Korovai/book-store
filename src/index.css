@@ -2,3 +2,39 @@ body {
   margin: 0;
   font-size: 16px;
 }
+
+/* ================================================== /*
+ * @MEDIA SCREEN AND (max-width:667px)
+/* ================================================== */
+@media screen and (max-width: 667px) {
+  
+  .wrLogo {
+    font-size: 2rem;
+  }
+}
+
+/* ================================================== /*
+ * @MEDIA SCREEN AND (max-width:467px)
+/* ================================================== */
+@media screen and (max-width: 467px) {
+  
+  .wrHeader {
+    flex-direction: column;
+  }
+  
+  .wrHeader a:first-child {
+    margin-bottom: 15px;
+  }
+  
+  .bookListItem {
+    flex-direction: column;
+  }
+  
+  .wrCoverBook {
+    align-self: center;
+  }
+  
+  .btnBuyBook {
+    width: 100%;
+  }
+}

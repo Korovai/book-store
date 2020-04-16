@@ -9,7 +9,7 @@ const ErrorIndicator = () => {
       <img src={iconError} alt="Icon Error" />
       <span className="errorIndicatorTitle">Server Timeout</span>
       <span className="errorIndicatorText">information is temporarily unavailable</span>
-      <span className="errorIndicatorText">(try again later)</span> 
+      <span className="errorIndicatorText">(try again later or reload the web page)</span> 
     </div>
   );
 };

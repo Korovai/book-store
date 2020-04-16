@@ -16,7 +16,7 @@ const HeaderPage = ({countCartItems, costCartItems}) => {
         </div>
       </Link>
     
-      <Link to="/basket">
+      <Link to="/shoppingcart">
         <div className="wrBasket">
           <img src={shoppingBag} alt="Shopping Bag" />
           <span>{countCartItems} items ({costCartItems}$)</span>
@@ -26,7 +26,7 @@ const HeaderPage = ({countCartItems, costCartItems}) => {
   );
 };
 
-const mapStateToProps = ({countCartItems, costCartItems}) => {
+const mapStateToProps = ({shoppingCart: {countCartItems, costCartItems}}) => {
   return {
     countCartItems,
     costCartItems

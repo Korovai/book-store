@@ -1,6 +1,6 @@
 const booksLoaded = (newBooks) => {
   return {
-    type: 'BOOKS_LOADED',
+    type: 'FETCH_BOOKS_SUCCESS',
     payload: newBooks
   };
 };
@@ -18,12 +18,6 @@ const booksError = (error) => {
   };
 };
 
-const cartItemsRequested = () => {
-  return {
-    type: 'FETCH_CARTITEMS_REQUEST'
-  };
-};
-
 const bookAddedToCart = (bookId) => {
   return {
     type: 'BOOK_ADDEDE_TO_CART',
@@ -33,21 +27,21 @@ const bookAddedToCart = (bookId) => {
 
 const bookIncreased = (bookId) => {
   return {
-    type: 'BOOK_INCREASED',
+    type: 'BOOK_INCREASED_FROM_CART',
     payload: bookId
   };
 };
 
 const bookDecreased = (bookId) => {
   return {
-    type: 'BOOK_DECREASED',
+    type: 'BOOK_DECREASED_FROM_CART',
     payload: bookId
   };
 };
 
 const bookDeleted = (bookId) => {
   return {
-    type: 'BOOK_DELETED',
+    type: 'BOOK_DELETED_FROM_CART',
     payload: bookId
   };
 };
@@ -56,7 +50,6 @@ export {
   booksLoaded,
   booksRequested,
   booksError,
-  cartItemsRequested,
   bookAddedToCart,
   bookIncreased,
   bookDecreased,

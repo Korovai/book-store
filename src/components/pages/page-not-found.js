@@ -10,9 +10,9 @@ const PageNotFound = () => {
       <img src={pageNotFound} alt="404" />
       <span className="pageNotFoundTitle">Page Not Found</span>
       <span className="pageNotFoundText">You seem to have clicked on a broken link or entered a URL that doesn't exist on this this site</span>
-      <button className="btnGoHome">
-        <Link to="/">Go back to site</Link>
-      </button> 
+      <Link to="/">
+        <button className="btnGoHome">Go back to site</button>
+      </Link>
     </div>      
   );
 };

@@ -1,6 +1,8 @@
 .wrShoppingCartPage {
   display: flex;
   justify-content: center;
+  width: calc(100% - 30px);
+  max-width: 1000px;
   margin: 15px;
 }
 
@@ -41,7 +43,7 @@
   width: 30px;
   height: 30px;
   border-radius: 2px;
-  margin: 0 2px;
+  margin: 2px;
   background: none;
   cursor: pointer;
 }

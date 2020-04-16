@@ -1,4 +1,6 @@
 .wrHomePage {
   display: flex;
+  width: calc(100% - 30px);
+  max-width: 1000px;
   margin: 15px;
 }

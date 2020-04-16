@@ -70,7 +70,7 @@ export default class BookstoreService {
         } else {
           resolve(this.data);
         }
-      }, 3000);
+      }, 2000);
     });
   };
 };

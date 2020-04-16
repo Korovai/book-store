@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {cartItemsRequested, bookIncreased, bookDecreased, bookDeleted} from '../../actions/index';
+
+import {
+  bookIncreased,
+  bookDecreased,
+  bookDeleted} 
+from '../../actions/index';
 
 import './shopping-cart-page.css';
 
 class ShoppingCartPage extends Component {
-  
-  componentDidMount() {
-    const {cartItemsRequested} = this.props;
-    cartItemsRequested();
-  };
-  
   render() {
-    const {cartItems, costCartItems, onIncrease, onDecrease, onDeleted} = this.props;
+    const {
+      cartItems,
+      costCartItems,
+      onIncrease,
+      onDecrease,
+      onDeleted
+    } = this.props;
     
     return( 
       <div className="wrShoppingCartPage">
@@ -33,6 +38,7 @@ class ShoppingCartPage extends Component {
               {
                 cartItems.map((item, idx) => {
                   const {id, title, count, total} = item;
+      
                   return(
                     <tr key={id} className="tableRow">
                       <td>{idx + 1}</td>
@@ -64,7 +70,7 @@ class ShoppingCartPage extends Component {
   };
 };
 
-const mapStateToProps = ({cartItems, costCartItems}) => {
+const mapStateToProps = ({shoppingCart: {cartItems, costCartItems}}) => {
   return {
     cartItems,
     costCartItems
@@ -73,18 +79,9 @@ const mapStateToProps = ({cartItems, costCartItems}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    cartItemsRequested: () => {
-      dispatch(cartItemsRequested());
-    },
-    onIncrease: (id) => {
-      dispatch(bookIncreased(id));
-    },
-    onDecrease: (id) => {
-      dispatch(bookDecreased(id));
-    },
-    onDeleted: (id) => {
-      dispatch(bookDeleted(id));
-    }
+    onIncrease: (id) => dispatch(bookIncreased(id)),
+    onDecrease: (id) => dispatch(bookDecreased(id)),
+    onDeleted: (id) => dispatch(bookDeleted(id))
   }
 };
 

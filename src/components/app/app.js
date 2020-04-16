@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+
 import Header from '../header/header';
 import HomePage from '../pages/home-page';
 import ShoppingCartPage from '../pages/shopping-cart-page';
@@ -14,7 +15,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/home" component={HomePage} />
-        <Route path="/basket" component={ShoppingCartPage} />
+        <Route path="/shoppingcart" component={ShoppingCartPage} />
         <Route component={PageNotFound} />
       </Switch>
     </div>
