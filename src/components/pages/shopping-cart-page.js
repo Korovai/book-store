@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {cartItemsRequested} from '../../actions/index';
+import {cartItemsRequested, bookIncreased, bookDecreased, bookDeleted} from '../../actions/index';
 
 import './shopping-cart-page.css';
 
@@ -12,7 +12,7 @@ class ShoppingCartPage extends Component {
   };
   
   render() {
-    const {cartItems} = this.props;
+    const {cartItems, costCartItems, onIncrease, onDecrease, onDeleted} = this.props;
     
     return( 
       <div className="wrShoppingCartPage">
@@ -40,13 +40,13 @@ class ShoppingCartPage extends Component {
                       <td>{count}</td>
                       <td>${total}</td>
                       <td className="wrActionButtons">
-                        <button className="btnAddItem">
+                        <button onClick={() => onIncrease(id)} className="btnAddItem">
                           <i className="fa fa-plus-circle" />
                         </button>
-                        <button className="btnDelItem">
+                        <button onClick={() => onDecrease(id)} className="btnDelItem">
                           <i className="fa fa-minus-circle" />
                         </button>
-                        <button className="btnDelAllItems">
+                        <button onClick={() => onDeleted(id)} className="btnDelAllItems">
                           <i className="fa fa-trash-o" />
                         </button>
                       </td>
@@ -57,16 +57,17 @@ class ShoppingCartPage extends Component {
             </tbody>
           </table>
 
-          <div className="totalCost">Total: $201</div>
+          <div className="totalCost">Total: ${costCartItems}</div>
         </div>
       </div>
     );  
   };
 };
 
-const mapStateToProps = ({cartItems}) => {
+const mapStateToProps = ({cartItems, costCartItems}) => {
   return {
-    cartItems
+    cartItems,
+    costCartItems
   }
 };
 
@@ -74,7 +75,16 @@ const mapDispatchToProps = (dispatch) => {
   return {
     cartItemsRequested: () => {
       dispatch(cartItemsRequested());
-    } 
+    },
+    onIncrease: (id) => {
+      dispatch(bookIncreased(id));
+    },
+    onDecrease: (id) => {
+      dispatch(bookDecreased(id));
+    },
+    onDeleted: (id) => {
+      dispatch(bookDeleted(id));
+    }
   }
 };
 

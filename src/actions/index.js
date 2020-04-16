@@ -31,10 +31,34 @@ const bookAddedToCart = (bookId) => {
   }
 };
 
+const bookIncreased = (bookId) => {
+  return {
+    type: 'BOOK_INCREASED',
+    payload: bookId
+  };
+};
+
+const bookDecreased = (bookId) => {
+  return {
+    type: 'BOOK_DECREASED',
+    payload: bookId
+  };
+};
+
+const bookDeleted = (bookId) => {
+  return {
+    type: 'BOOK_DELETED',
+    payload: bookId
+  };
+};
+
 export {
   booksLoaded,
   booksRequested,
   booksError,
   cartItemsRequested,
-  bookAddedToCart
+  bookAddedToCart,
+  bookIncreased,
+  bookDecreased,
+  bookDeleted
 }

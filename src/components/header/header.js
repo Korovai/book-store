@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import './header.css';
 import logo from './logo.png';
 import shoppingBag from './shopping-bag.png';
 
-const HeaderPage = () => {
+const HeaderPage = ({countCartItems, costCartItems}) => {
   return(
     <div className="wrHeader">
       <Link to="/">
@@ -18,11 +19,18 @@ const HeaderPage = () => {
       <Link to="/basket">
         <div className="wrBasket">
           <img src={shoppingBag} alt="Shopping Bag" />
-          <span>3 items (81$)</span>
+          <span>{countCartItems} items ({costCartItems}$)</span>
         </div>
       </Link>
     </div>
   );
 };
 
-export default HeaderPage;
+const mapStateToProps = ({countCartItems, costCartItems}) => {
+  return {
+    countCartItems,
+    costCartItems
+  };
+};
+
+export default connect(mapStateToProps)(HeaderPage);
